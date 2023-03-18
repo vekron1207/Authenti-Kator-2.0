@@ -5,21 +5,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.example.authenti_kator20.databinding.ActivityLoginBinding
 import com.example.authenti_kator20.databinding.ActivityRegisterBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.rxbinding2.widget.RxTextView
-import java.util.Observable
+import io.reactivex.Observable
+
 
 @SuppressLint("CheckResult")
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//  Auth
+        auth = FirebaseAuth.getInstance()
 
 //  Full Name Validation
         val nameStream = RxTextView.textChanges(binding.etFullname)
@@ -62,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 //  Confirm Password Validation
-        val passwordConfirmStream = io.reactivex.Observable.merge(
+        val passwordConfirmStream = Observable.merge(
             RxTextView.textChanges(binding.etPassword)
                 .skipInitialValue()
                 .map { password ->
@@ -78,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 //  Button Enable True or False
-        val invalidFieldStream = io.reactivex.Observable.combineLatest(
+        val invalidFieldStream = Observable.combineLatest(
             nameStream,
             emailStream,
             usernameStream,
@@ -99,7 +105,9 @@ class RegisterActivity : AppCompatActivity() {
 
 //  Click
         binding.btnRegister.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            val email = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            registerUser(email, password)
         }
         binding.tvHaveAccount.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -124,4 +132,17 @@ class RegisterActivity : AppCompatActivity() {
     private fun showPasswordConfirmedAlert(isNotValid: Boolean){
         binding.etConfirmPassword.error = if(isNotValid) "Please enter same passwords!" else null
     }
+
+    private fun registerUser(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    Toast.makeText(this, "Register Successful", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
 }
