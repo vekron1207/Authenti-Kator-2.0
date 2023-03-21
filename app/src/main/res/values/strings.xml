@@ -32,4 +32,10 @@
     </string>
     <string name="home_sub_title">Welcome Home</string>
     <string name="home_btn_logout">LOGOUT</string>
+    <string name="reset_pw">Reset your Password</string>
+    <string name="reset_pw_sub_title"><font color="#00C9BB">Reset Password</font> if you fogot your password.</string>
+    <string name="btn_reset_pw">Reset Password</string>
+    <string name="back_to_login">
+        Back to <font color="#00C9BB"><b>Login</b></font>
+    </string>
 </resources>
