@@ -28,5 +28,9 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show()
             }
         }
+
+        binding.homeHaveKey.setOnClickListener {
+            startActivity(Intent(this, HaveKeyActivity::class.java))
+        }
     }
 }

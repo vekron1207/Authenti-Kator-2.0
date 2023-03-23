@@ -38,4 +38,16 @@
     <string name="back_to_login">
         Back to <font color="#00C9BB"><b>Login</b></font>
     </string>
+    <string name="have_key">
+        I already have a key. <font color="#00C9BB"><b>Authenticate</b></font>
+    </string>
+    <string name="havent_key">
+        I don\'t have a key. <font color="#00C9BB"><b>Get Key</b></font>
+    </string>
+    <string name="home_title">Welcome to the <font color="#00C9BB">Authenticator</font>, Let\'s get you started.</string>
+    <string name="serialKey_title">Please enter you secret key.</string>
+    <string name="serial_key">Serial key</string>
+    <string name="serial_key_already_have">
+        I already have a Serial Key. <font color="#00C9BB"><b>Authenticate</b></font>
+    </string>
 </resources>

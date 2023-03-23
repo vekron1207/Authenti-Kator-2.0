@@ -39,16 +39,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_started_title" />
 
 
-
-
     <ImageView
         android:id="@+id/img_illustration_started"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
         android:contentDescription="@string/illustration_img"
         android:src="@drawable/illustration_started"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
