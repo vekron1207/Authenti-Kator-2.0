@@ -47,7 +47,7 @@
     <string name="home_title">Welcome to the <font color="#00C9BB">Authenticator</font>, Let\'s get you started.</string>
     <string name="serialKey_title">Please enter you secret key.</string>
     <string name="serial_key">Serial key</string>
-    <string name="serial_key_already_have">
-        I already have a Serial Key. <font color="#00C9BB"><b>Authenticate</b></font>
+    <string name="serial_key_not_have">
+        I don\'t have a Serial Key. <font color="#00C9BB"><b>Get Key</b></font>
     </string>
 </resources>

@@ -41,7 +41,7 @@
         android:id="@+id/tv_have_key"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/serial_key_already_have"
+        android:text="@string/serial_key_not_have"
         android:layout_marginTop="15sp"
         android:textAlignment="textStart"
         android:textStyle="bold"
