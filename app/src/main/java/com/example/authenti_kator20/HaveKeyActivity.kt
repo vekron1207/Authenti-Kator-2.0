@@ -33,7 +33,7 @@ class HaveKeyActivity : AppCompatActivity() {
             val serialKey = binding.etSerialKey.text.toString()
             val isValid = serialKey.matches(regex)
             binding.etSerialKey.error = if (!isValid) {
-                "Invalid $fieldName"
+                "Invalid $fieldName, please enter only numbers."
             } else if (isNotValid) {
                 "$fieldName cannot be empty"
             } else {
