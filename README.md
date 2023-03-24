@@ -52,8 +52,5 @@ To use the app, follow these steps:
 
 - Submit a pull request to the main repository.
 
-## License
-The Product Authentication App is licensed under the MIT License. See the LICENSE file for more information.
-
 ## Contact
 If you have any questions or concerns about the app, please contact us at varun.kashyap1207@gmail.com
