@@ -24,7 +24,7 @@ To install the app, follow these steps:
 1. Clone the repository using the following command:
 
 ```bash
-git clone https://github.com/your-username/product-authentication-app.git 
+git clone https://github.com/vekron1207/Authenti-Kator-2.0.git
 ```
 
 2. Open the project in Android Studio.
