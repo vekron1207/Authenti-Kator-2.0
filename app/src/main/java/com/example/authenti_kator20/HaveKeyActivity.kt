@@ -22,7 +22,7 @@ class HaveKeyActivity : AppCompatActivity() {
             .map { serialKey ->
                 serialKey.isEmpty()
             }
-        serialKeyStream.subscribe{
+        serialKeyStream.subscribe {
             showTextMinimalAlert(it, "Serial Key")
         }
 

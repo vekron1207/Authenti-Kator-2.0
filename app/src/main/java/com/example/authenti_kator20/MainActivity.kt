@@ -19,10 +19,10 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        binding.btnLogin.setOnClickListener{
+        binding.btnLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
-        binding.btnRegister.setOnClickListener{
+        binding.btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }

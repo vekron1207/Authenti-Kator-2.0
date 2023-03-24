@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
             .map { username ->
                 username.isEmpty()
             }
-        usernameStream.subscribe{
+        usernameStream.subscribe {
             showTextMinimalAlert(it, "Email/Username")
         }
 
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
             .map { password ->
                 password.isEmpty()
             }
-        passwordStream.subscribe{
+        passwordStream.subscribe {
             showTextMinimalAlert(it, "Password")
         }
 
@@ -48,21 +48,23 @@ class LoginActivity : AppCompatActivity() {
         val invalidFieldStream = io.reactivex.Observable.combineLatest(
             usernameStream,
             passwordStream
-        ) {usernameInvalid: Boolean, passwordInvalid: Boolean ->
+        ) { usernameInvalid: Boolean, passwordInvalid: Boolean ->
             !usernameInvalid && !passwordInvalid
         }
         invalidFieldStream.subscribe { isValid ->
             if (isValid) {
                 binding.btnLogin.isEnabled = true
-                binding.btnLogin.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_color)
+                binding.btnLogin.backgroundTintList =
+                    ContextCompat.getColorStateList(this, R.color.primary_color)
             } else {
                 binding.btnLogin.isEnabled = false
-                binding.btnLogin.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.darker_gray)
+                binding.btnLogin.backgroundTintList =
+                    ContextCompat.getColorStateList(this, android.R.color.darker_gray)
             }
         }
 
 //  Click
-        binding.btnLogin.setOnClickListener{
+        binding.btnLogin.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
             loginUser(email, password)
@@ -76,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun showTextMinimalAlert(isNotValid: Boolean, text: String){
+    private fun showTextMinimalAlert(isNotValid: Boolean, text: String) {
         if (text == "Email/Username")
             binding.etEmail.error = if (isNotValid) "$text Cannot be empty!" else null
         else if (text == "Password")

@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.example.authenti_kator20.databinding.ActivityResetPasswordBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.rxbinding2.widget.RxTextView
+
 @SuppressLint("CheckResult")
 class ResetPasswordActivity : AppCompatActivity() {
 
@@ -29,7 +30,7 @@ class ResetPasswordActivity : AppCompatActivity() {
             .map { email ->
                 !Patterns.EMAIL_ADDRESS.matcher(email).matches()
             }
-        emailStream.subscribe{
+        emailStream.subscribe {
             showEmailValidAlert(it)
         }
 
@@ -41,9 +42,14 @@ class ResetPasswordActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { reset ->
                     if (reset.isSuccessful) {
                         Intent(this, LoginActivity::class.java).also {
-                            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            it.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(it)
-                            Toast.makeText(this, "Check email to reset password.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this,
+                                "Check email to reset password.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     } else {
                         Toast.makeText(this, reset.exception?.message, Toast.LENGTH_SHORT).show()
@@ -58,14 +64,16 @@ class ResetPasswordActivity : AppCompatActivity() {
     }
 
     private fun showEmailValidAlert(isNotValid: Boolean) {
-        if (isNotValid){
+        if (isNotValid) {
             binding.etEmail.error = "Email is not Valid!"
             binding.btnResetPw.isEnabled = false
-            binding.btnResetPw.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.darker_gray)
+            binding.btnResetPw.backgroundTintList =
+                ContextCompat.getColorStateList(this, android.R.color.darker_gray)
         } else {
             binding.etEmail.error = null
             binding.btnResetPw.isEnabled = true
-            binding.btnResetPw.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_color)
+            binding.btnResetPw.backgroundTintList =
+                ContextCompat.getColorStateList(this, R.color.primary_color)
         }
     }
 }

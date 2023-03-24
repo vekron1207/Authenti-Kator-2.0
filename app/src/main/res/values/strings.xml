@@ -58,4 +58,7 @@
     <string name="have_key_already">
         I already have the key <font color="#00C9BB"><b>Authenticate</b></font>
     </string>
+    <string name="scanner_desc">Scanner</string>
+    <string name="camera_view_desc">Camera view</string>
+    <string name="visit_link_desc">Visit Link</string>
 </resources>

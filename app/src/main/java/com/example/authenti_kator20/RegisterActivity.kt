@@ -43,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
             .map { email ->
                 !Patterns.EMAIL_ADDRESS.matcher(email).matches()
             }
-        emailStream.subscribe{
+        emailStream.subscribe {
             showEmailValidAlert(it)
         }
 
@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             .map { username ->
                 username.length < 6
             }
-        usernameStream.subscribe{
+        usernameStream.subscribe {
             showTextMinimalAlert(it, "Username")
         }
 
@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
             .map { password ->
                 password.length < 6
             }
-        passwordStream.subscribe{
+        passwordStream.subscribe {
             showTextMinimalAlert(it, "Password")
         }
 
@@ -96,10 +96,12 @@ class RegisterActivity : AppCompatActivity() {
         invalidFieldStream.subscribe { isValid ->
             if (isValid) {
                 binding.btnRegister.isEnabled = true
-                binding.btnRegister.backgroundTintList = ContextCompat.getColorStateList(this, R.color.primary_color)
+                binding.btnRegister.backgroundTintList =
+                    ContextCompat.getColorStateList(this, R.color.primary_color)
             } else {
                 binding.btnRegister.isEnabled = false
-                binding.btnRegister.backgroundTintList = ContextCompat.getColorStateList(this, android.R.color.darker_gray)
+                binding.btnRegister.backgroundTintList =
+                    ContextCompat.getColorStateList(this, android.R.color.darker_gray)
             }
         }
 
@@ -114,23 +116,25 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun showNameExistAlert(isNotValid: Boolean){
+    private fun showNameExistAlert(isNotValid: Boolean) {
         binding.etFullname.error = if (isNotValid) "Name Cannot be Empty!" else null
     }
 
-    private fun showTextMinimalAlert(isNotValid: Boolean, text: String){
+    private fun showTextMinimalAlert(isNotValid: Boolean, text: String) {
         if (text == "Username")
-            binding.etUsername.error = if (isNotValid) "$text Must be more than 6 letters!" else null
+            binding.etUsername.error =
+                if (isNotValid) "$text Must be more than 6 letters!" else null
         else if (text == "Password")
-            binding.etPassword.error = if (isNotValid) "$text Must be more than 8 letters!" else null
+            binding.etPassword.error =
+                if (isNotValid) "$text Must be more than 8 letters!" else null
     }
 
-    private fun  showEmailValidAlert(isNotValid: Boolean) {
+    private fun showEmailValidAlert(isNotValid: Boolean) {
         binding.etEmail.error = if (isNotValid) "Invalid Email" else null
     }
 
-    private fun showPasswordConfirmedAlert(isNotValid: Boolean){
-        binding.etConfirmPassword.error = if(isNotValid) "Please enter same passwords!" else null
+    private fun showPasswordConfirmedAlert(isNotValid: Boolean) {
+        binding.etConfirmPassword.error = if (isNotValid) "Please enter same passwords!" else null
     }
 
     private fun registerUser(email: String, password: String) {

@@ -32,5 +32,9 @@ class HomeActivity : AppCompatActivity() {
         binding.homeHaveKey.setOnClickListener {
             startActivity(Intent(this, HaveKeyActivity::class.java))
         }
+
+        binding.homeHaveNotKey.setOnClickListener {
+            startActivity(Intent(this, HaveNotKeyActivity::class.java))
+        }
     }
 }
