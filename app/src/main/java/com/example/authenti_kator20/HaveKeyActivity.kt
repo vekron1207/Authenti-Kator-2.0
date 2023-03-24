@@ -25,6 +25,10 @@ class HaveKeyActivity : AppCompatActivity() {
         serialKeyStream.subscribe{
             showTextMinimalAlert(it, "Serial Key")
         }
+
+        binding.tvHaveKey.setOnClickListener {
+            startActivity(Intent(this, HaveNotKeyActivity::class.java))
+        }
     }
 
     private fun showTextMinimalAlert(isNotValid: Boolean, fieldName: String) {

@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/illustration_img"
         android:src="@drawable/home_bg2"
-        app:layout_constraintBottom_toTopOf="@+id/home_sub_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
