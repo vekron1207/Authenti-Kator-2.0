@@ -39,7 +39,8 @@ class ImageAnalyzer(
                         Barcode.FORMAT_EAN_8,
                         Barcode.FORMAT_UPC_A,
                         Barcode.FORMAT_UPC_E,
-                        Barcode.FORMAT_CODE_128
+                        Barcode.FORMAT_CODE_128,
+                        Barcode.FORMAT_QR_CODE
                     )
                     .build()
             )
