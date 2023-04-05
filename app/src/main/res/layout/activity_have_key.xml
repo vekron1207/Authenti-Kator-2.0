@@ -37,6 +37,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/authenticate_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/til_serial"
+        app:layout_constraintBottom_toTopOf="@id/tv_have_key"
+        android:text="@string/authenticate_btn_str"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"/>
+
     <TextView
         android:id="@+id/tv_have_key"
         android:layout_width="match_parent"
@@ -45,7 +55,7 @@
         android:layout_marginTop="15sp"
         android:textAlignment="textStart"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/til_serial"
+        app:layout_constraintTop_toBottomOf="@+id/authenticate_btn"
         tools:layout_editor_absoluteX="20dp" />
 
 
