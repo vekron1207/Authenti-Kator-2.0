@@ -41,8 +41,8 @@ class HaveKeyActivity : AppCompatActivity() {
         }
 
         binding.authenticateBtn.setOnClickListener {
-            val serialNumber = binding.etSerialKey.text.toString().trim()
-            databaseRef.orderByChild("serial_number").equalTo(serialNumber).addListenerForSingleValueEvent(object : ValueEventListener {
+            val serialNumber = binding.etSerialKey.text.toString().trim().toInt()
+            databaseRef.orderByChild("serial_number").equalTo(serialNumber.toDouble()).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         Log.d("HavekeyActivity", "Data from database: $snapshot")
@@ -65,6 +65,7 @@ class HaveKeyActivity : AppCompatActivity() {
                 }
             })
         }
+
     }
 
     private fun showTextMinimalAlert(isNotValid: Boolean, fieldName: String) {
