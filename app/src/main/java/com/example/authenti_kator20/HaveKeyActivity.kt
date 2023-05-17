@@ -15,7 +15,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ValueEventListener
 import com.jakewharton.rxbinding2.widget.RxTextView
-import kotlinx.android.synthetic.main.activity_have_key.authenticate_btn
+import java.util.*
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @SuppressLint("CheckResult")
 class HaveKeyActivity : AppCompatActivity() {
@@ -60,7 +62,9 @@ class HaveKeyActivity : AppCompatActivity() {
                                 Toast.makeText(this@HaveKeyActivity, "Product is real", Toast.LENGTH_SHORT).show()
                             } else if (isAuthenticated && authenticatedBy != currentUser) {
                                 // Product already authenticated by another user
-                                Toast.makeText(this@HaveKeyActivity, "Fake product", Toast.LENGTH_SHORT).show()
+                                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+                                val activatedDate = if (authenticatedAt != null) dateFormat.format(Date(authenticatedAt)) else "Unknown"
+                                Toast.makeText(this@HaveKeyActivity, "Product is already activated on $activatedDate", Toast.LENGTH_SHORT).show()
                             } else {
                                 // Product not yet authenticated
                                 databaseRef.child(productSnapshot.key!!).apply {
@@ -80,7 +84,6 @@ class HaveKeyActivity : AppCompatActivity() {
                 }
             })
         }
-
     }
 
     private fun showTextMinimalAlert(isNotValid: Boolean, fieldName: String) {
